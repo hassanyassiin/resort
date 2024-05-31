@@ -102,7 +102,7 @@ class Authentication extends ChangeNotifier {
   }
 
   Future<void> Login({required Map<String, String> credentials}) async {
-    final url = Get_REQUEST_URL(url: '/admin/Login');
+    final url = Get_REQUEST_URL(url: '/user/Login');
 
     try {
       final response = await http.post(url,
@@ -122,6 +122,9 @@ class Authentication extends ChangeNotifier {
 
       _token = response_data['token'];
       _username = response_data['username'];
+      _first_name = response_data['firstName'];
+      _last_name = response_data['lastName'];
+      _region = response_data['region'];
 
       final prefs = await SharedPreferences.getInstance();
 
@@ -130,6 +133,9 @@ class Authentication extends ChangeNotifier {
           json.encode({
             'Token': _token,
             'Username': _username,
+            'FirstName': _first_name,
+            'LastName': _last_name,
+            'Region': _region,
           }));
 
       notifyListeners();

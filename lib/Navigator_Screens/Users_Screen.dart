@@ -17,7 +17,10 @@ class _Users_ScreenState extends State<Users_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Get_White,
-      appBar: C_AppBar(title: 'Users'),
+      appBar: C_AppBar(
+        title: 'Users',
+        leading_widget: const SizedBox(),
+      ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.5.h),
       ),

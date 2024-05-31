@@ -4,11 +4,14 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../Authentication/Providers/Authentication.dart';
 
+import '../../../Navigator_Screens/Main_Screen.dart';
+
 import '../../../Global/Functions/Colors.dart';
 import '../../../Global/Functions/Errors.dart';
 
 import '../../../Global/Widgets/AppBar.dart';
 import '../../../Global/Widgets/Buttons.dart';
+import '../../../Global/Widgets/Texts.dart';
 import '../../../Global/Widgets/Toasts.dart';
 import '../../../Global/Widgets/TextFormField.dart';
 import '../../../Global/Widgets/Password_TextFormField.dart';
@@ -17,6 +20,7 @@ import '../../../Global/Widgets/Phone_Number_TextFormField.dart';
 import '../../../Global/Screens/Loading_Screen.dart';
 
 import '../../../Authentication/Widgets/Signup____Location_Item.dart';
+import '../../../Authentication/Screens/Login_Screen.dart';
 
 class Signup_Screen extends StatefulWidget {
   const Signup_Screen({super.key});
@@ -90,6 +94,8 @@ class _Signup_ScreenState extends State<Signup_Screen> {
         if (mounted) {
           // To Popup the Loading Screen.
           Navigator.pop(context);
+
+          Navigator.pushNamed(context, Main_Screen.routeName);
         }
       } catch (error) {
         if (mounted) {
@@ -238,6 +244,35 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                     background_color: Get_Primary,
                     title: 'Create Account',
                     onTap: Create_Account,
+                  ),
+                  SizedBox(height: 2.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Flexible(
+                        child: C_Text(
+                          max_lines: 1,
+                          color: Get_Grey,
+                          font_size: 1.5,
+                          text: 'Already has an account ? ',
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          Login_Screen.routeName,
+                        ),
+                        child: C_Text(
+                          max_lines: 1,
+                          font_size: 1.5,
+                          color: Get_Primary,
+                          text: 'Login',
+                          text_decoration: TextDecoration.underline,
+                        ),
+                      )
+                    ],
                   ),
                 ],
               ),

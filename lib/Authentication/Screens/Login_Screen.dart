@@ -4,6 +4,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../Authentication/Providers/Authentication.dart';
 
+import '../../../Navigator_Screens/Main_Screen.dart';
+
 import '../../Global/Functions/Errors.dart';
 import '../../../Global/Functions/Colors.dart';
 
@@ -47,7 +49,8 @@ class _Login_ScreenState extends State<Login_Screen> {
 
         if (mounted) {
           // To pop up the Loading screen
-          return Navigator.pop(context);
+          Navigator.pop(context);
+          Navigator.pushNamed(context, Main_Screen.routeName);
         }
       } catch (error) {
         if (mounted) {

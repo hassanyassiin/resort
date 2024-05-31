@@ -16,7 +16,9 @@ class _Chat_ScreenState extends State<Chat_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Get_White,
-      appBar: C_AppBar(),
+      appBar: C_AppBar(
+        leading_widget: const SizedBox(),
+      ),
     );
   }
 }

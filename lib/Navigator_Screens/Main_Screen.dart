@@ -6,7 +6,6 @@ import '../../../Global/Functions/Colors.dart';
 import '../../../Navigator_Screens/Users_Screen.dart';
 import '../../../Navigator_Screens/Chat_Screen.dart';
 
-
 class Main_Screen extends StatefulWidget {
   const Main_Screen({super.key});
   static const String routeName = '/Main';
@@ -22,6 +21,18 @@ class _Main_ScreenState extends State<Main_Screen> {
     const Users_Screen(),
     const Chat_Screen(),
   ];
+
+  var _did_change = true;
+
+  @override
+  void didChangeDependencies() {
+    if (_did_change) {
+      current_index = 0;
+      _did_change = false;
+    }
+
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {

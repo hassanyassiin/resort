@@ -3,10 +3,10 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../Global/Functions/Infos.dart';
 import '../../../Global/Functions/Colors.dart';
-import '../../../Global/Functions/Errors.dart';
 import '../../../Global/Functions/Get_Location.dart';
 
 import '../../../Global/Widgets/Texts.dart';
+import '../../../Global/Widgets/Toasts.dart';
 
 import '../../../Global/Screens/Loading_Screen.dart';
 import '../../../Global/Modal_Sheets/Show_Radio_Buttons_Modal_Sheet.dart';
@@ -62,10 +62,9 @@ class _Signup____Location_ItemState extends State<Signup____Location_Item> {
                   if (context.mounted) {
                     // To Popup the Loading Screen.
                     Navigator.pop(context);
-                    return Error_Dialog(
-                      context: context,
-                      error: 'Something went wrong',
-                    );
+                    return Show_Text_Toast(
+                        context: context,
+                        text: 'Please enable location in settings.');
                   }
                 }
               },

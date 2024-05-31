@@ -66,6 +66,7 @@ class MyApp extends StatelessWidget {
             ),
             routes: {
               Users_Screen.routeName: (context) => const Users_Screen(),
+              Main_Screen.routeName: (context) => const Main_Screen(),
               Signup_Screen.routeName: (context) => const Signup_Screen(),
               Login_Screen.routeName: (context) => const Login_Screen(),
               Intro_Screen_Two.routeName: (context) => const Intro_Screen_Two(),
