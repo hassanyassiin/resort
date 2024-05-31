@@ -85,10 +85,10 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Get_Shein,
+      backgroundColor: Get_White,
       appBar: C_AppBar(
         title: 'Check Time',
-        appBar_color: Get_Shein,
+        appBar_color: Get_White,
         is_show_divider: true,
         leading_widget: const SizedBox(),
       ),
@@ -134,8 +134,12 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.5.h),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: status == 'Proceed' && Is_Same_Date()
+                      ? MainAxisAlignment.start
+                      : MainAxisAlignment.center,
+                  crossAxisAlignment: status == 'Proceed' && Is_Same_Date()
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     if (status == 'Not Yet')
@@ -147,45 +151,82 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
                     if (status == 'Not Yet') SizedBox(height: 2.5.h),
                     if (status == 'Not Yet') Check_Time_Alert(onTap: Submit),
                     if (status == 'Proceed' && Is_Same_Date())
-                      SizedBox(
-                        width: double.infinity,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: GestureDetector(
-                            onTap: () => Submit(received_status: 'Delivered'),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 3.w, vertical: 1.5.h),
-                              decoration: BoxDecoration(
-                                color: Get_Primary,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(1.2.h)),
-                              ),
-                              child: C_Text(
-                                weight: '500',
-                                font_size: 1.8,
-                                color: Get_White,
-                                text: 'Did you Delivered ?',
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
+                          Image.asset('assets/four.jpeg'),
+                          SizedBox(height: 5.h),
+                          C_Text(
+                            text_align: TextAlign.center,
+                            weight: 'Bold',
+                            text: 'We are coming to you today.',
+                            font_size: 1.8,
+                          ),
+                          SizedBox(height: 5.h),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: GestureDetector(
+                                onTap: () =>
+                                    Submit(received_status: 'Delivered'),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10.w, vertical: 1.5.h),
+                                  decoration: BoxDecoration(
+                                    color: Get_Primary,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(1.2.h)),
+                                  ),
+                                  child: C_Text(
+                                    weight: '500',
+                                    font_size: 1.8,
+                                    color: Get_White,
+                                    text: 'Did you Delivered ?',
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                        ],
                       )
                     else if (status == 'Proceed' && !Is_Same_Date())
-                      Center(
-                        child: C_Text(
-                          weight: '600',
-                          text: "Not available yet",
-                          font_size: 1.8,
-                        ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
+                          SizedBox(
+                            width: double.infinity,
+                            height: 30.h,
+                            child: Image.asset('assets/six.jpeg'),
+                          ),
+                          SizedBox(height: 3.h),
+                          C_Text(
+                            weight: '500',
+                            font_size: 1.9,
+                            color: Get_Grey,
+                            text: 'We will be there in $date',
+                          )
+                        ],
                       )
                     else if (status == 'Delivered')
-                      Center(
-                        child: C_Text(
-                          weight: '600',
-                          text: "Done",
-                          font_size: 1.8,
-                        ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
+                          Image.asset('assets/five.jpeg'),
+                          SizedBox(height: 3.h),
+                          C_Text(
+                            weight: '600',
+                            color: Get_Grey,
+                            font_size: 1.8,
+                            text: "Thank you for helping us.",
+                          ),
+                        ],
                       )
                   ],
                 ),
