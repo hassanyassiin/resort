@@ -17,6 +17,8 @@ import '../../../Navigator_Screens/Users_Screen.dart';
 import '../../../Global/Functions/Colors.dart';
 import '../../../Global/Screens/Splash_Screen.dart';
 
+import '../../../Check_Time/Screens/Check_Time_Screen.dart';
+
 final navigator_key = GlobalKey<NavigatorState>();
 
 void main() {
@@ -67,6 +69,8 @@ class MyApp extends StatelessWidget {
             routes: {
               Users_Screen.routeName: (context) => const Users_Screen(),
               Main_Screen.routeName: (context) => const Main_Screen(),
+              Check_Time_Screen.routeName: (context) =>
+                  const Check_Time_Screen(),
               Signup_Screen.routeName: (context) => const Signup_Screen(),
               Login_Screen.routeName: (context) => const Login_Screen(),
               Intro_Screen_Two.routeName: (context) => const Intro_Screen_Two(),
