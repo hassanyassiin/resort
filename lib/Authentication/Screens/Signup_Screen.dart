@@ -12,6 +12,8 @@ import '../../../Global/Widgets/Phone_Number_TextFormField.dart';
 
 import '../../../Global/Screens/Loading_Screen.dart';
 
+import '../../../Authentication/Widgets/Signup____Location_Item.dart';
+
 class Signup_Screen extends StatefulWidget {
   const Signup_Screen({super.key});
   static const routeName = 'Signup';
@@ -29,6 +31,10 @@ class _Signup_ScreenState extends State<Signup_Screen> {
   final username = TextEditingController();
   final password = TextEditingController();
   final confirm_password = TextEditingController();
+
+  var latitude = 0.0;
+  var longitude = 0.0;
+  var region = 'Beirut';
 
   @override
   void dispose() {
@@ -62,9 +68,9 @@ class _Signup_ScreenState extends State<Signup_Screen> {
           title: 'Sign up',
           is_show_divider: true,
         ),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.5.w),
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,8 +135,15 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                   phone_number: '',
                   onSaved: (number) {},
                 ),
+                Signup____Location_Item(
+                  Get_Region: () => region,
+                  longitude: longitude,
+                  latitude: latitude,
+                  Update_Latitude: (value) => latitude = value,
+                  Update_Longitude: (value) => longitude = value,
+                  Update_Region: (value) => region = value,
+                ),
                 C_TextFormField(
-                  top_margin: 2,
                   label_text: 'Username',
                   is_enable_interactive_selection: false,
                   vertical_content_padding: 1.6,
@@ -142,7 +155,8 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                     if (RegExp(r'^[0-9._]+').hasMatch(username)) {
                       return 'Username should start with character';
                     }
-                    if (!RegExp(r'^[a-zA-Z][a-zA-Z0-9._]*$').hasMatch(username)) {
+                    if (!RegExp(r'^[a-zA-Z][a-zA-Z0-9._]*$')
+                        .hasMatch(username)) {
                       return 'Usernames can only use Roman letters (a-z, A-Z), numbers, underscores and periods.';
                     }
 
