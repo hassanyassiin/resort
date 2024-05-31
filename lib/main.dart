@@ -18,6 +18,8 @@ import '../../../Navigator_Screens/Home_Screen.dart';
 import '../../../Global/Functions/Colors.dart';
 import '../../../Global/Screens/Splash_Screen.dart';
 
+import '../../../Global/Photos/Carousel_Slider.dart';
+
 import '../../../Guideline/Screens/Products_Screen.dart';
 import '../../../Guideline/Screens/Guideline_Screen.dart';
 
@@ -43,6 +45,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => Authentication()),
+        ChangeNotifierProvider(create: (context) => Carousel_Index_Notifier()),
       ],
       child: Consumer<Authentication>(
         builder: (context, auth, child) {

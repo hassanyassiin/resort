@@ -37,11 +37,7 @@ Widget Carousel_Slider({
         ),
         items: images.map(
           (image) {
-            return Rect_Network_Image(
-              image: image,
-              border_radius: 0,
-              aspect_ratio: aspect_ratio,
-            );
+            return Image.asset(image);
           },
         ).toList(),
       ),
