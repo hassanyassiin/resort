@@ -171,14 +171,22 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
                           ),
                         ),
                       )
-                    else
+                    else if (status == 'Proceed' && !Is_Same_Date())
+                      Center(
+                        child: C_Text(
+                          weight: '600',
+                          text: "Not available yet",
+                          font_size: 1.8,
+                        ),
+                      )
+                    else if (status == 'Delivered')
                       Center(
                         child: C_Text(
                           weight: '600',
                           text: "Done",
                           font_size: 1.8,
                         ),
-                      ),
+                      )
                   ],
                 ),
               );
