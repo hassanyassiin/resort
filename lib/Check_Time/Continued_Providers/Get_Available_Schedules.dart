@@ -20,15 +20,17 @@ Future<Map<String, dynamic>> Cd_Get_Available_Schedules() async {
       throw C_Http_Exception(response_data['ErrorFound'] ?? '');
     }
 
-    if ((response_data as Map<String, dynamic>).containsKey('status')) {
+    if ((response_data as Map<String, dynamic>).containsKey('notAvailable')) {
       return {
         'Region': 'Not Available',
         'Date': '',
+        'Status': 'Not Yet',
       };
     }
     return {
       'Region': response_data['Schedule']['region'],
       'Date': response_data['Schedule']['date'],
+      'Status': response_data['status'],
     };
   } catch (error) {
     rethrow;

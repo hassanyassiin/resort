@@ -4,6 +4,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../Global/Functions/Colors.dart';
 import '../../../Global/Functions/Errors.dart';
+import '../../../Global/Functions/Infos.dart';
 
 import '../.././Global/Widgets/AppBar.dart';
 import '../../../Global/Widgets/Failed.dart';
@@ -30,11 +31,12 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
 
   var region = '';
   var date = '';
+  var status = 'Not Yet';
 
-  Future<void> Submit() async {
+  Future<void> Submit({String received_status = 'Proceed'}) async {
     var is_confirmed = await C_Alert_Dialog_For_Confirmation(
       context: context,
-      button_one_title: 'Proceed',
+      button_one_title: received_status,
       button_one_color: Get_Primary,
       content: 'Are you ready to proceed',
     );
@@ -45,11 +47,15 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
 
     Loading_Screen(context: context);
     try {
-      await Cd_Update_Status(status: 'Proceed');
+      await Cd_Update_Status(status: received_status);
 
       if (mounted) {
         // To Popup the Loading Screen.
         Navigator.pop(context);
+
+        setState(() {
+          status = received_status;
+        });
       }
     } catch (error) {
       if (mounted) {
@@ -58,6 +64,22 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
         return Error_Dialog(error: error.toString(), context: context);
       }
     }
+  }
+
+  bool Is_Same_Date() {
+    if (date.trim().isNotEmpty) {
+      var day = date.split(' ')[0];
+      var month = date.split(' ')[1];
+      var year = date.split(' ')[2];
+
+      DateTime schedule_date = DateTime.parse("$year-${dates[month]}-$day");
+      DateTime current_date = DateTime.now();
+
+      return schedule_date.year == current_date.year &&
+          schedule_date.month == current_date.month &&
+          schedule_date.day == current_date.day;
+    }
+    return false;
   }
 
   @override
@@ -76,6 +98,7 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
                 if (arguments['Region'] != 'Not Available') {
                   region = arguments['Region'];
                   date = arguments['Date'];
+                  status = arguments['Status'];
                 }
                 is_first_request_success = true;
               })
@@ -108,19 +131,56 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
                 ),
               );
             } else {
-              return ListView(
+              return Padding(
                 padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.5.h),
-                children: <Widget>[
-                  C_Text(
-                    weight: '500',
-                    font_size: 1.75,
-                    text: 'We will be in $region in $date',
-                  ),
-                  SizedBox(height: 2.5.h),
-                  Check_Time_Alert(
-                    onTap: Submit,
-                  ),
-                ],
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    if (status == 'Not Yet')
+                      C_Text(
+                        weight: '500',
+                        font_size: 1.75,
+                        text: 'We will be in $region in $date',
+                      ),
+                    if (status == 'Not Yet') SizedBox(height: 2.5.h),
+                    if (status == 'Not Yet') Check_Time_Alert(onTap: Submit),
+                    if (status == 'Proceed' && Is_Same_Date())
+                      SizedBox(
+                        width: double.infinity,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: GestureDetector(
+                            onTap: () => Submit(received_status: 'Delivered'),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 3.w, vertical: 1.5.h),
+                              decoration: BoxDecoration(
+                                color: Get_Primary,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(1.2.h)),
+                              ),
+                              child: C_Text(
+                                weight: '500',
+                                font_size: 1.8,
+                                color: Get_White,
+                                text: 'Did you Delivered ?',
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    else
+                      Center(
+                        child: C_Text(
+                          weight: '600',
+                          text: "Done",
+                          font_size: 1.8,
+                        ),
+                      ),
+                  ],
+                ),
               );
             }
           }
