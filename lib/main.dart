@@ -13,6 +13,7 @@ import '../../../Authentication/Screens/Signup_Screen.dart';
 import '../../../Navigator_Screens/Chat_Screen.dart';
 import '../../../Navigator_Screens/Main_Screen.dart';
 import '../../../Navigator_Screens/Users_Screen.dart';
+import '../../../Navigator_Screens/Home_Screen.dart';
 
 import '../../../Global/Functions/Colors.dart';
 import '../../../Global/Screens/Splash_Screen.dart';
@@ -71,6 +72,7 @@ class MyApp extends StatelessWidget {
             ),
             routes: {
               Users_Screen.routeName: (context) => const Users_Screen(),
+              Home_Screen.routeName: (context) => const Home_Screen(),
               Product_Screen.routeName: (context) => const Product_Screen(),
               Guideline_Screen.routeName: (context) => const Guideline_Screen(),
               Main_Screen.routeName: (context) => const Main_Screen(),

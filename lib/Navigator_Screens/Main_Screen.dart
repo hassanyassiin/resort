@@ -5,6 +5,7 @@ import '../../../Global/Functions/Colors.dart';
 
 import '../../../Navigator_Screens/Users_Screen.dart';
 import '../../../Navigator_Screens/Chat_Screen.dart';
+import '../../../Navigator_Screens/Home_Screen.dart';
 
 import '../../../Guideline/Screens/Guideline_Screen.dart';
 
@@ -22,6 +23,7 @@ class _Main_ScreenState extends State<Main_Screen> {
   var current_index = 0;
 
   List<Widget> tabs = [
+    const Home_Screen(),
     const Users_Screen(),
     const Guideline_Screen(),
     const Check_Time_Screen(),
@@ -63,6 +65,11 @@ class _Main_ScreenState extends State<Main_Screen> {
           selectedItemColor: Get_Primary,
           unselectedItemColor: Get_BlueDark90,
           items: [
+            BottomNavigationBarItem(
+                icon: Padding(
+                    padding: EdgeInsets.only(bottom: 0.3.h),
+                    child: const Icon(Icons.home)),
+                label: 'Home'),
             BottomNavigationBarItem(
                 icon: Padding(
                     padding: EdgeInsets.only(bottom: 0.3.h),
