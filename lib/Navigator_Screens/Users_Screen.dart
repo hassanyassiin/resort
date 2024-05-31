@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../Global/Functions/Colors.dart';
-import '../../Global/Widgets/AppBar.dart';
+import '../../../Global/Widgets/AppBar.dart';
 
 class Users_Screen extends StatefulWidget {
   const Users_Screen({super.key});
