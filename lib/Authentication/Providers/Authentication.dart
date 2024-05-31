@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../Authentication/Providers/Signup.dart';
+
 import '../../../Global/Functions/Http_Exception.dart';
 
 const _server_url = 'localhost:8080';
@@ -39,8 +41,65 @@ get Get_Token => _token;
 String? _username;
 get Get_Username => _username;
 
+String? _first_name;
+get Get_First_Name => _first_name;
+
+String? _last_name;
+get Get_Last_Name => _last_name;
+
+String? _region;
+get Get_Region => _region;
+
 class Authentication extends ChangeNotifier {
   bool get Is_Auth => _token != null;
+
+  Future<void> Signup({
+    required String first_name,
+    required String last_name,
+    required String email,
+    required String phone_number,
+    required double latitude,
+    required double longitude,
+    required String region,
+    required String username,
+    required String password,
+  }) async {
+    try {
+      var received_token = await Cd_Signup(
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        phone_number: phone_number,
+        latitude: latitude,
+        longitude: longitude,
+        region: region,
+        username: username,
+        password: password,
+      );
+
+      _token = received_token;
+      _username = username;
+      _first_name = first_name;
+      _last_name = last_name;
+      _region = region;
+
+      final prefs = await SharedPreferences.getInstance();
+
+      await prefs.setString(
+          'userData',
+          json.encode({
+            'Token': _token,
+            'Username': _username,
+            'FirstName': _first_name,
+            'LastName': _last_name,
+            'Region': _region,
+          }));
+
+      notifyListeners();
+    } catch (error) {
+      rethrow;
+    }
+  }
 
   Future<void> Login({required Map<String, String> credentials}) async {
     final url = Get_REQUEST_URL(url: '/admin/Login');
@@ -97,6 +156,9 @@ class Authentication extends ChangeNotifier {
 
       _token = user_details['Token'];
       _username = user_details['Username'];
+      _first_name = user_details['FirstName'];
+      _last_name = user_details['LastName'];
+      _region = user_details['Region'];
 
       notifyListeners();
       return true;

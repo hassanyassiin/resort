@@ -53,6 +53,7 @@ class _C_Password_TextFormFieldState extends State<C_Password_TextFormField> {
       top_margin: widget.top_margin,
       vertical_content_padding: 1.6,
       bottom_margin: widget.bottom_margin,
+      auto_validate_mode: AutovalidateMode.onUserInteraction,
       focus_node: widget.password_focus_node,
       onSaved: widget.onSaved,
       is_obscure: is_tapped ? false : true,
