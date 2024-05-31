@@ -3,8 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../Authentication/Providers/Authentication.dart';
 import '../../../Authentication/Screens/Login_Screen.dart';
+import '../../../Authentication/Providers/Authentication.dart';
+import '../../../Authentication/Screens/Intro_Screen_One.dart';
+import '../../../Authentication/Screens/Intro_Screen_Two.dart';
+import '../../../Authentication/Screens/Intro_Screen_Three.dart';
+import '../../../Authentication/Screens/Signup_Screen.dart';
 
 import '../../../Navigator_Screens/Chat_Screen.dart';
 import '../../../Navigator_Screens/Main_Screen.dart';
@@ -44,19 +48,30 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(useMaterial3: false),
             home: ResponsiveSizer(
               builder: (context, orientation, screenType) {
-                return auth.Is_Auth
-                    ? const Main_Screen()
-                    : FutureBuilder(
-                        future: auth.Try_Auto_Login(),
-                        builder: (context, authResultSnapshot) =>
-                            authResultSnapshot.connectionState ==
-                                    ConnectionState.waiting
-                                ? const Splash_Screen()
-                                : const Login_Screen());
+                if (auth.Is_Auth) {
+                  return const Main_Screen();
+                } else {
+                  return FutureBuilder(
+                      future:
+                          !Get_Is_Try_Auto_Login ? auth.Try_Auto_Login() : null,
+                      builder: (context, authResultSnapshot) =>
+                          authResultSnapshot.connectionState ==
+                                  ConnectionState.waiting
+                              ? const Splash_Screen()
+                              : Get_Is_First_Time
+                                  ? const Intro_Screen_One()
+                                  : const Signup_Screen());
+                }
               },
             ),
             routes: {
               Users_Screen.routeName: (context) => const Users_Screen(),
+              Signup_Screen.routeName: (context) => const Signup_Screen(),
+              Login_Screen.routeName: (context) => const Login_Screen(),
+              Intro_Screen_Two.routeName: (context) => const Intro_Screen_Two(),
+              Intro_Screen_Three.routeName: (context) =>
+                  const Intro_Screen_Three(),
+              Intro_Screen_One.routeName: (context) => const Intro_Screen_One(),
               Chat_Screen.routeName: (context) => const Chat_Screen(),
             },
           );

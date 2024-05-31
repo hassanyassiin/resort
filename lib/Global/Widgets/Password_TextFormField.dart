@@ -11,6 +11,7 @@ class C_Password_TextFormField extends StatefulWidget {
   final TextEditingController? controller;
   final double bottom_margin;
   final double top_margin;
+  final String title;
 
   const C_Password_TextFormField({
     this.onSaved,
@@ -18,6 +19,7 @@ class C_Password_TextFormField extends StatefulWidget {
     this.password_focus_node,
     this.bottom_margin = 0,
     this.top_margin = 0,
+    required this.title,
     super.key,
   });
 
@@ -47,8 +49,9 @@ class _C_Password_TextFormFieldState extends State<C_Password_TextFormField> {
   @override
   Widget build(BuildContext context) {
     return C_TextFormField(
-      label_text: 'Password',
+      label_text: widget.title,
       top_margin: widget.top_margin,
+      vertical_content_padding: 1.6,
       bottom_margin: widget.bottom_margin,
       focus_node: widget.password_focus_node,
       onSaved: widget.onSaved,
@@ -58,7 +61,7 @@ class _C_Password_TextFormFieldState extends State<C_Password_TextFormField> {
       text_input_action: TextInputAction.done,
       validate: (password) {
         if (password.length < 8) {
-          return 'Password must be at least 8 characters!';
+          return '${widget.title} must be at least 8 characters!';
         }
         return null;
       },

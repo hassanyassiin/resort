@@ -37,7 +37,7 @@ Widget Phone_Number_TextFormField({
       listTileDivider: const Divider(thickness: 0.5),
       countryNameStyle: TextStyle(fontSize: 1.6.h),
       searchFieldInputDecoration: InputDecoration(
-        contentPadding: EdgeInsets.all(2.h),
+        contentPadding: EdgeInsets.all(1.6.h),
         labelText: 'Search Country',
         hintStyle: TextStyle(fontSize: 2.h),
         floatingLabelStyle: TextStyle(color: Get_Primary),
@@ -54,7 +54,7 @@ Widget Phone_Number_TextFormField({
     decoration: InputDecoration(
       counterText: '',
       isDense: true,
-      contentPadding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.w),
+      contentPadding: EdgeInsets.symmetric(vertical: 1.6.h, horizontal: 3.w),
       labelText: 'Phone Number',
       labelStyle: WidgetStateTextStyle.resolveWith((Set<WidgetState> states) {
         final Color color =

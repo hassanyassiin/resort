@@ -68,9 +68,9 @@ Color Get_Blue = const Color(0xFF44afed);
 // Color Get_Primary10 = const Color(0xFF44afed).withOpacity(0.1);
 // Color Get_Primary20 = const Color(0xFF44afed).withOpacity(0.2);
 
-Color Get_Primary = Colors.orange;
-Color Get_Primary10 = Colors.orange.withOpacity(0.1);
-Color Get_Primary20 = Colors.orange.withOpacity(0.2);
+Color Get_Primary = Colors.green;
+Color Get_Primary10 = Colors.green.withOpacity(0.1);
+Color Get_Primary20 = Colors.green.withOpacity(0.2);
 
 Color Get_Secondary = const Color(0xFFf4f7f9);
 

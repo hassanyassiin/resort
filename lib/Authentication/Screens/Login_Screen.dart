@@ -76,9 +76,7 @@ class _Login_ScreenState extends State<Login_Screen> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         backgroundColor: Get_White,
-        appBar: C_AppBar(
-            // suffix_widgets: [const Language_Icon()],
-            ),
+        appBar: C_AppBar(),
         body: Form(
           key: _form_key,
           child: ListView(
@@ -114,6 +112,7 @@ class _Login_ScreenState extends State<Login_Screen> {
               ),
               C_Password_TextFormField(
                 bottom_margin: 1,
+                title: 'Password',
                 password_focus_node: password_focus_node,
                 onSaved: (password) => credentials['password'] = password!,
               ),

@@ -8,6 +8,12 @@ import '../../../Global/Functions/Http_Exception.dart';
 const _server_url = 'localhost:8080';
 get Get_Server_Url => _server_url;
 
+var _is_first_time = true;
+get Get_Is_First_Time => _is_first_time;
+
+var is_try_auto_login = false;
+get Get_Is_Try_Auto_Login => is_try_auto_login;
+
 dynamic Get_REQUEST_URL({
   required String url,
   bool is_form_data = false,
@@ -75,7 +81,12 @@ class Authentication extends ChangeNotifier {
 
   Future<bool> Try_Auto_Login() async {
     try {
+      is_try_auto_login = true;
       final prefs = await SharedPreferences.getInstance();
+
+      if (prefs.containsKey('Attempt')) {
+        _is_first_time = false;
+      }
 
       if (!prefs.containsKey('userData')) {
         return false;
@@ -97,8 +108,9 @@ class Authentication extends ChangeNotifier {
   Future<void> Logout() async {
     try {
       _token = null;
+
       final prefs = await SharedPreferences.getInstance();
-      await prefs.clear();
+      await prefs.remove('userData');
 
       notifyListeners();
     } catch (_) {
