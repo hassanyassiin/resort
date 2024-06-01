@@ -3,9 +3,9 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../Global/Functions/Colors.dart';
 
-import '../../../Navigator_Screens/Users_Screen.dart';
 import '../../../Navigator_Screens/Chat_Screen.dart';
 import '../../../Navigator_Screens/Home_Screen.dart';
+import '../../../Navigator_Screens/Profile_Screen.dart';
 
 import '../../../Guideline/Screens/Guideline_Screen.dart';
 
@@ -24,10 +24,10 @@ class _Main_ScreenState extends State<Main_Screen> {
 
   List<Widget> tabs = [
     const Home_Screen(),
-    const Users_Screen(),
     const Guideline_Screen(),
     const Check_Time_Screen(),
     const Chat_Screen(),
+    const Profile_Screen(),
   ];
 
   var _did_change = true;
@@ -73,11 +73,6 @@ class _Main_ScreenState extends State<Main_Screen> {
             BottomNavigationBarItem(
                 icon: Padding(
                     padding: EdgeInsets.only(bottom: 0.3.h),
-                    child: const Icon(Icons.people)),
-                label: 'Users'),
-            BottomNavigationBarItem(
-                icon: Padding(
-                    padding: EdgeInsets.only(bottom: 0.3.h),
                     child: const Icon(Icons.rule)),
                 label: 'Guideline'),
             BottomNavigationBarItem(
@@ -90,6 +85,11 @@ class _Main_ScreenState extends State<Main_Screen> {
                     padding: EdgeInsets.only(bottom: 0.3.h),
                     child: const Icon(Icons.chat)),
                 label: 'Chat'),
+            BottomNavigationBarItem(
+                icon: Padding(
+                    padding: EdgeInsets.only(bottom: 0.3.h),
+                    child: const Icon(Icons.account_circle)),
+                label: 'Profile'),
           ],
           onTap: (new_index) {
             setState(() {
