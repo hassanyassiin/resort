@@ -14,6 +14,8 @@ import '../../../Profile/Providers/Profile_Model.dart';
 import '../../../Profile/Widgets/Box_For_Editing_User_Data.dart';
 import '../../../Profile/Screens/Edit_Profile_Pic_Screen.dart';
 import '../../../Profile/Screens/Edit_Name_Screen.dart';
+import '../../../Profile/Screens/Edit_Email_Address_Screen.dart';
+import '../../../Profile/Screens/Edit_Phone_Number_Screen.dart';
 
 class Profile_Screen extends StatelessWidget {
   const Profile_Screen({super.key});
@@ -96,12 +98,18 @@ class Profile_Screen extends StatelessWidget {
                   {
                     'UserCredentialTitle': 'Email address',
                     'UserCredentialData': Get_Email,
-                    'onTap': () {},
+                    'onTap': () => Navigator.pushNamed(
+                          context,
+                          Edit_Email_Address_Screen.routeName,
+                        ),
                   },
                   {
                     'UserCredentialTitle': 'Phone number',
                     'UserCredentialData': '+$Get_Phone_Number',
-                    'onTap': () {},
+                    'onTap': () => Navigator.pushNamed(
+                          context,
+                          Edit_Phone_Number_Screen.routeName,
+                        ),
                   },
                   {
                     'UserCredentialTitle': 'Region',
