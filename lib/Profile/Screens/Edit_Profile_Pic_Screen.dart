@@ -3,19 +3,15 @@ import 'package:flutter/material.dart';
 import '../../../Global/Functions/Colors.dart';
 import '../../../Global/Widgets/AppBar.dart';
 
-class Profile_Screen extends StatelessWidget {
-  const Profile_Screen({super.key});
-  static const routeName = 'Profile';
+class Edit_Profile_Pic_Screen extends StatelessWidget {
+  const Edit_Profile_Pic_Screen({super.key});
+  static const routeName = 'Edit-Profile-Pic-Screen';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Get_White,
-      appBar: C_AppBar(
-        title: 'Profile',
-        is_show_divider: true,
-        leading_widget: const SizedBox(),
-      ),
+      appBar: C_AppBar(title: 'Edit Profile Pic'),
     );
   }
 }

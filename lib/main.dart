@@ -13,7 +13,7 @@ import '../../../Authentication/Screens/Signup_Screen.dart';
 import '../../../Navigator_Screens/Chat_Screen.dart';
 import '../../../Navigator_Screens/Main_Screen.dart';
 import '../../../Navigator_Screens/Home_Screen.dart';
-import '../../../Navigator_Screens/Profile_Screen.dart';
+import 'Profile/Screens/Profile_Screen.dart';
 
 import '../../../Global/Functions/Colors.dart';
 import '../../../Global/Screens/Splash_Screen.dart';
@@ -24,6 +24,8 @@ import '../../../Guideline/Screens/Products_Screen.dart';
 import '../../../Guideline/Screens/Guideline_Screen.dart';
 
 import '../../../Check_Time/Screens/Check_Time_Screen.dart';
+
+import '../../../Profile/Providers/Profile_Model.dart';
 
 final navigator_key = GlobalKey<NavigatorState>();
 
@@ -45,6 +47,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => Authentication()),
+        ChangeNotifierProvider(create: (context) => Profile_Model()),
         ChangeNotifierProvider(create: (context) => Carousel_Index_Notifier()),
       ],
       child: Consumer<Authentication>(

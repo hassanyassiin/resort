@@ -5,11 +5,12 @@ import '../../../Global/Functions/Colors.dart';
 
 import '../../../Navigator_Screens/Chat_Screen.dart';
 import '../../../Navigator_Screens/Home_Screen.dart';
-import '../../../Navigator_Screens/Profile_Screen.dart';
 
 import '../../../Guideline/Screens/Guideline_Screen.dart';
 
 import '../../../Check_Time/Screens/Check_Time_Screen.dart';
+
+import '../../../Profile/Screens/Profile_Screen.dart';
 
 class Main_Screen extends StatefulWidget {
   const Main_Screen({super.key});
