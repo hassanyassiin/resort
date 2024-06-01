@@ -218,7 +218,7 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: <Widget>[
-                          Image.asset('assets/seven.png'),
+                          Image.asset('assets/happy_world.png'),
                           SizedBox(height: 3.h),
                           C_Text(
                             weight: '600',
