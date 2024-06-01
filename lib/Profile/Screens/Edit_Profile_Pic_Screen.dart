@@ -134,7 +134,8 @@ class _Edit_Profile_Pic_ScreenState extends State<Edit_Profile_Pic_Screen> {
         child: Circle_Stack_Choose_And_Edit_Photo(
           width: 40,
           file_photo: photo,
-          network_image: Get_Profile_Pic,
+          network_image:
+              Get_PHOTO_URL(folder: 'profile', image: Get_Profile_Pic),
           onChoose_photo: (new_photo) => photo = new_photo,
         ),
       ),

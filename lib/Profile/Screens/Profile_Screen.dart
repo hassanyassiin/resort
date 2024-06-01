@@ -7,6 +7,7 @@ import '../../../Authentication/Providers/Authentication.dart';
 import '../../../../Global/Functions/Colors.dart';
 import '../../../../Global/Widgets/AppBar.dart';
 import '../../../../Global/Widgets/Texts.dart';
+import '../../../Global/Widgets/Box_List_Tiles.dart';
 import '../../../Global/Photos/Network_Image.dart';
 
 import '../../../Profile/Providers/Profile_Model.dart';
@@ -104,7 +105,19 @@ class Profile_Screen extends StatelessWidget {
                     'onTap': () {},
                   },
                 ],
-              )
+              ),
+              Box_List_Tiles(
+                list_tiles: [
+                  {
+                    'Prefix': Icons.change_circle,
+                    'Title': 'Change Password',
+                    'TitleColor': Get_Primary,
+                    'PrefixColor': Get_Primary,
+                    'Suffix': const SizedBox(),
+                    'onTap': () {},
+                  },
+                ],
+              ),
             ],
           ),
         );
