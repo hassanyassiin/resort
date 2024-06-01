@@ -26,6 +26,7 @@ import '../../../Guideline/Screens/Guideline_Screen.dart';
 import '../../../Check_Time/Screens/Check_Time_Screen.dart';
 
 import '../../../Profile/Providers/Profile_Model.dart';
+import '../../../Profile/Screens/Edit_Name_Screen.dart';
 import '../../../Profile/Screens/Edit_Profile_Pic_Screen.dart';
 
 final navigator_key = GlobalKey<NavigatorState>();
@@ -82,6 +83,7 @@ class MyApp extends StatelessWidget {
               Edit_Profile_Pic_Screen.routeName: (context) =>
                   const Edit_Profile_Pic_Screen(),
               Home_Screen.routeName: (context) => const Home_Screen(),
+              Edit_Name_Screen.routeName: (context) => const Edit_Name_Screen(),
               Product_Screen.routeName: (context) => const Product_Screen(),
               Guideline_Screen.routeName: (context) => const Guideline_Screen(),
               Main_Screen.routeName: (context) => const Main_Screen(),

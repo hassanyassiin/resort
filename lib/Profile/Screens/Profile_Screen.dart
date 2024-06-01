@@ -13,6 +13,7 @@ import '../../../Global/Photos/Network_Image.dart';
 import '../../../Profile/Providers/Profile_Model.dart';
 import '../../../Profile/Widgets/Box_For_Editing_User_Data.dart';
 import '../../../Profile/Screens/Edit_Profile_Pic_Screen.dart';
+import '../../../Profile/Screens/Edit_Name_Screen.dart';
 
 class Profile_Screen extends StatelessWidget {
   const Profile_Screen({super.key});
@@ -87,7 +88,10 @@ class Profile_Screen extends StatelessWidget {
                   {
                     'UserCredentialTitle': 'Name',
                     'UserCredentialData': "$Get_First_Name $Get_Last_Name",
-                    'onTap': () {},
+                    'onTap': () => Navigator.pushNamed(
+                          context,
+                          Edit_Name_Screen.routeName,
+                        ),
                   },
                   {
                     'UserCredentialTitle': 'Email address',
