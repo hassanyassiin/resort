@@ -10,6 +10,7 @@ import '../../../../Global/Widgets/Texts.dart';
 import '../../../Global/Photos/Network_Image.dart';
 
 import '../../../Profile/Providers/Profile_Model.dart';
+import '../../../Profile/Widgets/Box_For_Editing_User_Data.dart';
 import '../../../Profile/Screens/Edit_Profile_Pic_Screen.dart';
 
 class Profile_Screen extends StatelessWidget {
@@ -18,69 +19,96 @@ class Profile_Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profile = Provider.of<Profile_Model>(context);
-
-    return Scaffold(
-      backgroundColor: Get_Shein,
-      appBar: C_AppBar(
-        title: 'Profile',
-        appBar_color: Get_Shein,
-        leading_widget: const SizedBox(),
-      ),
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.5.h),
-            decoration: BoxDecoration(
-              color: Get_White,
-              borderRadius: BorderRadius.all(Radius.circular(1.5.h)),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
+    return Consumer<Profile_Model>(
+      builder: (context, value, child) {
+        return Scaffold(
+          backgroundColor: Get_Shein,
+          appBar: C_AppBar(
+            title: 'Profile',
+            appBar_color: Get_Shein,
+            leading_widget: const SizedBox(),
+          ),
+          body: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.5.h),
+                decoration: BoxDecoration(
+                  color: Get_White,
+                  borderRadius: BorderRadius.all(Radius.circular(1.5.h)),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    C_Text(
-                      font_size: 2,
-                      weight: '600',
-                      text: 'Profile Pic',
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        C_Text(
+                          font_size: 2,
+                          weight: '600',
+                          text: 'Profile Pic',
+                        ),
+                        GestureDetector(
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            Edit_Profile_Pic_Screen.routeName,
+                          ),
+                          child: C_Text(
+                            text: 'Edit',
+                            weight: '500',
+                            font_size: 2,
+                            color: Get_Primary,
+                          ),
+                        ),
+                      ],
                     ),
-                    GestureDetector(
-                      onTap: () => Navigator.pushNamed(
-                        context,
-                        Edit_Profile_Pic_Screen.routeName,
+                    SizedBox(height: 3.h),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Circle_Network_Image(
+                        width: 30,
+                        image: Get_PHOTO_URL(
+                          folder: 'profile',
+                          image: Get_Profile_Pic,
+                        ),
                       ),
-                      child: C_Text(
-                        text: 'Edit',
-                        weight: '500',
-                        font_size: 2,
-                        color: Get_Primary,
-                      ),
-                    ),
+                    )
                   ],
                 ),
-                SizedBox(height: 3.h),
-                Align(
-                  alignment: Alignment.center,
-                  child: Circle_Network_Image(
-                    width: 30,
-                    image: Get_PHOTO_URL(
-                      folder: 'profile',
-                      image: Get_Profile_Pic,
-                    ),
-                  ),
-                )
-              ],
-            ),
+              ),
+              SizedBox(height: 1.h),
+              Box_For_Editing_User_Data(
+                credentials: [
+                  {
+                    'UserCredentialTitle': 'Name',
+                    'UserCredentialData': "$Get_First_Name $Get_Last_Name",
+                    'onTap': () {},
+                  },
+                  {
+                    'UserCredentialTitle': 'Email address',
+                    'UserCredentialData': Get_Email,
+                    'onTap': () {},
+                  },
+                  {
+                    'UserCredentialTitle': 'Phone number',
+                    'UserCredentialData': '+$Get_Phone_Number',
+                    'onTap': () {},
+                  },
+                  {
+                    'UserCredentialTitle': 'Region',
+                    'UserCredentialData': Get_Region,
+                    'onTap': () {},
+                  },
+                ],
+              )
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
