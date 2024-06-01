@@ -12,7 +12,6 @@ import '../../../Authentication/Screens/Signup_Screen.dart';
 
 import '../../../Navigator_Screens/Chat_Screen.dart';
 import '../../../Navigator_Screens/Main_Screen.dart';
-import '../../../Navigator_Screens/Users_Screen.dart';
 import '../../../Navigator_Screens/Home_Screen.dart';
 import '../../../Navigator_Screens/Profile_Screen.dart';
 
@@ -75,7 +74,6 @@ class MyApp extends StatelessWidget {
               },
             ),
             routes: {
-              Users_Screen.routeName: (context) => const Users_Screen(),
               Profile_Screen.routeName: (context) => const Profile_Screen(),
               Home_Screen.routeName: (context) => const Home_Screen(),
               Product_Screen.routeName: (context) => const Product_Screen(),
