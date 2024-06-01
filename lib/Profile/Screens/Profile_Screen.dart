@@ -16,6 +16,8 @@ import '../../../Profile/Screens/Edit_Profile_Pic_Screen.dart';
 import '../../../Profile/Screens/Edit_Name_Screen.dart';
 import '../../../Profile/Screens/Edit_Email_Address_Screen.dart';
 import '../../../Profile/Screens/Edit_Phone_Number_Screen.dart';
+import '../../../Profile/Screens/Edit_Region_Screen.dart';
+import '../../../Profile/Screens/Change_Password_Screen.dart';
 
 class Profile_Screen extends StatelessWidget {
   const Profile_Screen({super.key});
@@ -114,7 +116,10 @@ class Profile_Screen extends StatelessWidget {
                   {
                     'UserCredentialTitle': 'Region',
                     'UserCredentialData': Get_Region,
-                    'onTap': () {},
+                    'onTap': () => Navigator.pushNamed(
+                          context,
+                          Edit_Region_Screen.routeName,
+                        ),
                   },
                 ],
               ),
@@ -126,7 +131,10 @@ class Profile_Screen extends StatelessWidget {
                     'TitleColor': Get_Primary,
                     'PrefixColor': Get_Primary,
                     'Suffix': const SizedBox(),
-                    'onTap': () {},
+                    'onTap': () => Navigator.pushNamed(
+                          context,
+                          Change_Password_Screen.routeName,
+                        ),
                   },
                 ],
               ),

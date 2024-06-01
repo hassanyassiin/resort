@@ -13,7 +13,6 @@ import '../../../Authentication/Screens/Signup_Screen.dart';
 import '../../../Navigator_Screens/Chat_Screen.dart';
 import '../../../Navigator_Screens/Main_Screen.dart';
 import '../../../Navigator_Screens/Home_Screen.dart';
-import 'Profile/Screens/Profile_Screen.dart';
 
 import '../../../Global/Functions/Colors.dart';
 import '../../../Global/Screens/Splash_Screen.dart';
@@ -26,10 +25,13 @@ import '../../../Guideline/Screens/Guideline_Screen.dart';
 import '../../../Check_Time/Screens/Check_Time_Screen.dart';
 
 import '../../../Profile/Providers/Profile_Model.dart';
+import '../../../Profile/Screens/Profile_Screen.dart';
 import '../../../Profile/Screens/Edit_Name_Screen.dart';
 import '../../../Profile/Screens/Edit_Profile_Pic_Screen.dart';
 import '../../../Profile/Screens/Edit_Email_Address_Screen.dart';
 import '../../../Profile/Screens/Edit_Phone_Number_Screen.dart';
+import '../../../Profile/Screens/Edit_Region_Screen.dart';
+import '../../../Profile/Screens/Change_Password_Screen.dart';
 
 final navigator_key = GlobalKey<NavigatorState>();
 
@@ -82,6 +84,10 @@ class MyApp extends StatelessWidget {
             ),
             routes: {
               Profile_Screen.routeName: (context) => const Profile_Screen(),
+              Change_Password_Screen.routeName: (context) =>
+                  const Change_Password_Screen(),
+              Edit_Region_Screen.routeName: (context) =>
+                  const Edit_Region_Screen(),
               Edit_Phone_Number_Screen.routeName: (context) =>
                   const Edit_Phone_Number_Screen(),
               Edit_Email_Address_Screen.routeName: (context) =>
