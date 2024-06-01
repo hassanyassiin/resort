@@ -13,6 +13,7 @@ class Profile_Screen extends StatelessWidget {
       backgroundColor: Get_White,
       appBar: C_AppBar(
         title: 'Profile',
+        is_show_divider: true,
         leading_widget: const SizedBox(),
       ),
     );

@@ -47,8 +47,17 @@ get Get_First_Name => _first_name;
 String? _last_name;
 get Get_Last_Name => _last_name;
 
+String? _email;
+get Get_Email => _email;
+
+String? _phone_number;
+get Get_Phone_Number => _phone_number;
+
 String? _region;
 get Get_Region => _region;
+
+String? _profile_pic;
+get Get_Profile_Pic => _profile_pic;
 
 class Authentication extends ChangeNotifier {
   bool get Is_Auth => _token != null;
@@ -81,18 +90,24 @@ class Authentication extends ChangeNotifier {
       _username = username;
       _first_name = first_name;
       _last_name = last_name;
+      _email = email;
+      _phone_number = phone_number;
       _region = region;
+      _profile_pic = 'DEFAULT';
 
       final prefs = await SharedPreferences.getInstance();
 
       await prefs.setString(
           'userData',
           json.encode({
+            'Email': _email,
             'Token': _token,
+            'Region': _region,
             'Username': _username,
             'FirstName': _first_name,
             'LastName': _last_name,
-            'Region': _region,
+            'PhoneNumber': _phone_number,
+            'ProfilePic': _profile_pic,
           }));
 
       notifyListeners();
@@ -124,7 +139,10 @@ class Authentication extends ChangeNotifier {
       _username = response_data['username'];
       _first_name = response_data['firstName'];
       _last_name = response_data['lastName'];
+      _email = response_data['email'];
+      _phone_number = response_data['phonenumber'];
       _region = response_data['region'];
+      _profile_pic = response_data['profilePic'];
 
       final prefs = await SharedPreferences.getInstance();
 
@@ -135,7 +153,10 @@ class Authentication extends ChangeNotifier {
             'Username': _username,
             'FirstName': _first_name,
             'LastName': _last_name,
+            'Email': _email,
             'Region': _region,
+            'PhoneNumber': _phone_number,
+            'ProfilePic': _profile_pic,
           }));
 
       notifyListeners();
@@ -165,6 +186,9 @@ class Authentication extends ChangeNotifier {
       _first_name = user_details['FirstName'];
       _last_name = user_details['LastName'];
       _region = user_details['Region'];
+      _email = user_details['Email'];
+      _phone_number = user_details['PhoneNumber'];
+      _profile_pic = user_details['ProfilePic'];
 
       notifyListeners();
       return true;
