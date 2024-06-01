@@ -2,9 +2,11 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Authentication/Providers/Authentication.dart';
 
@@ -19,6 +21,8 @@ import '../../../Global/Widgets/Texts.dart';
 import '../../../Global/Screens/Loading_Screen.dart';
 
 import '../../../Global/Photos/Circle_Stack_Choose_And_Edit_Photo.dart';
+
+import '../../../Profile/Providers/Profile_Model.dart';
 
 class Edit_Profile_Pic_Screen extends StatefulWidget {
   const Edit_Profile_Pic_Screen({super.key});
@@ -64,7 +68,28 @@ class _Edit_Profile_Pic_ScreenState extends State<Edit_Profile_Pic_Screen> {
         throw C_Http_Exception(response_data['ErrorFound'] ?? '');
       }
 
+      final prefs = await SharedPreferences.getInstance();
+      String? user_data_string = prefs.getString('userData');
+
+      Map<String, dynamic> userData =
+          user_data_string != null ? json.decode(user_data_string) : {};
+
+      userData['Token'] = Get_Token;
+      userData['Username'] = Get_Username;
+      userData['FirstName'] = Get_First_Name;
+      userData['LastName'] = Get_Last_Name;
+      userData['Email'] = Get_Email;
+      userData['Region'] = Get_Region;
+      userData['PhoneNumber'] = Get_Phone_Number;
+      userData['ProfilePic'] = response_data['profilePic'];
+
+      String updated_user_data_string = json.encode(userData);
+      await prefs.setString('userData', updated_user_data_string);
+      Set_Profile_Pic(response_data['profilePic']);
+
       if (mounted) {
+        Provider.of<Profile_Model>(context, listen: false).Notify_Listener();
+
         // To Popup the Loading Screen.
         Navigator.pop(context);
         // To Popup the Screen.

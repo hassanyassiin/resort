@@ -36,27 +36,35 @@ String Get_PHOTO_URL({
 }
 
 String? _token;
+void Set_Token(value) => _token = value;
 get Get_Token => _token;
 
 String? _username;
+void Set_Username(value) => _username = value;
 get Get_Username => _username;
 
 String? _first_name;
+void Set_First_Name(value) => _first_name = value;
 get Get_First_Name => _first_name;
 
 String? _last_name;
+void Set_Last_Name(value) => _last_name = value;
 get Get_Last_Name => _last_name;
 
 String? _email;
+void Set_Email(value) => _email = value;
 get Get_Email => _email;
 
 String? _phone_number;
+void Set_Phone_Number(value) => _phone_number = value;
 get Get_Phone_Number => _phone_number;
 
 String? _region;
+void Set_Region(value) => _region = value;
 get Get_Region => _region;
 
 String? _profile_pic;
+void Set_Profile_Pic(value) => _profile_pic = value;
 get Get_Profile_Pic => _profile_pic;
 
 class Authentication extends ChangeNotifier {

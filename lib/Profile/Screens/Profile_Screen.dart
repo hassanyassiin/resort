@@ -65,11 +65,11 @@ class Profile_Screen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 1.h),
-                SizedBox(
-                  height: 15.h,
-                  width: double.infinity,
+                SizedBox(height: 3.h),
+                Align(
+                  alignment: Alignment.center,
                   child: Circle_Network_Image(
+                    width: 30,
                     image: Get_PHOTO_URL(
                       folder: 'profile',
                       image: Get_Profile_Pic,
