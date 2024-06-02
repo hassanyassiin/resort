@@ -9,6 +9,7 @@ import '../../../../Global/Widgets/AppBar.dart';
 import '../../../../Global/Widgets/Texts.dart';
 import '../../../Global/Widgets/Box_List_Tiles.dart';
 import '../../../Global/Photos/Network_Image.dart';
+import '../../../Global/Alert_Dialogs/Alert_Dialog_For_Confirmation.dart';
 
 import '../../../Profile/Providers/Profile_Model.dart';
 import '../../../Profile/Widgets/Box_For_Editing_User_Data.dart';
@@ -25,6 +26,8 @@ class Profile_Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final auth = Provider.of<Authentication>(context, listen: false);
+
     return Consumer<Profile_Model>(
       builder: (context, value, child) {
         return Scaffold(
@@ -135,6 +138,30 @@ class Profile_Screen extends StatelessWidget {
                           context,
                           Change_Password_Screen.routeName,
                         ),
+                  },
+                ],
+              ),
+              Box_List_Tiles(
+                list_tiles: [
+                  {
+                    'Prefix': Icons.logout,
+                    'Title': 'Logout',
+                    'TitleColor': Get_Red,
+                    'PrefixColor': Get_Red,
+                    'Suffix': const SizedBox(),
+                    'onTap': () async {
+                      var is_confirmed = await C_Alert_Dialog_For_Confirmation(
+                        content: 'logout',
+                        context: context,
+                        button_one_title: 'Logout',
+                      );
+
+                      if (!is_confirmed) {
+                        return;
+                      } else {
+                        return auth.Logout();
+                      }
+                    },
                   },
                 ],
               ),

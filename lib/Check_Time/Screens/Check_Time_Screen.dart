@@ -82,6 +82,25 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
     return false;
   }
 
+  bool Is_Passed() {
+    if (date.trim().isNotEmpty) {
+      var day = date.split(' ')[0];
+      var month = date.split(' ')[1];
+      var year = date.split(' ')[2];
+
+      DateTime schedule_date = DateTime.parse("$year-${dates[month]}-$day");
+      DateTime current_date = DateTime.now();
+
+      var a = schedule_date.year == current_date.year &&
+          schedule_date.month == current_date.month &&
+          schedule_date.day == current_date.day;
+
+      return schedule_date.difference(current_date).isNegative;
+    }
+
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -193,25 +212,48 @@ class _Check_Time_ScreenState extends State<Check_Time_Screen> {
                         ],
                       )
                     else if (status == 'Proceed' && !Is_Same_Date())
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.max,
-                        children: <Widget>[
-                          SizedBox(
-                            width: double.infinity,
-                            height: 30.h,
-                            child: Image.asset('assets/six.jpeg'),
-                          ),
-                          SizedBox(height: 3.h),
-                          C_Text(
-                            weight: '500',
-                            font_size: 1.9,
-                            color: Get_Grey,
-                            text: 'We will be there in $date',
-                          )
-                        ],
-                      )
+                      if (Is_Passed())
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            SizedBox(
+                              width: double.infinity,
+                              height: 30.h,
+                              child: Image.asset('assets/twelve.jpeg'),
+                            ),
+                            SizedBox(height: 3.h),
+                            C_Text(
+                              text_align: TextAlign.center,
+                              weight: '500',
+                              font_size: 1.5,
+                              color: Get_Grey,
+                              text:
+                                  'Oops! You are late, we went to $region, stay tuned to the next time or contact us when you are ready.',
+                            )
+                          ],
+                        )
+                      else
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            SizedBox(
+                              width: double.infinity,
+                              height: 30.h,
+                              child: Image.asset('assets/six.jpeg'),
+                            ),
+                            SizedBox(height: 3.h),
+                            C_Text(
+                              weight: '500',
+                              font_size: 1.9,
+                              color: Get_Grey,
+                              text: 'We will be there in $date',
+                            )
+                          ],
+                        )
                     else if (status == 'Delivered')
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
