@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../Authentication/Providers/Authentication.dart';
 import '../../../Authentication/Screens/Signup_Screen.dart';
 
 import '../../../Global/Functions/Colors.dart';
@@ -16,6 +18,8 @@ class Intro_Screen_Three extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final auth = Provider.of<Authentication>(context, listen: false);
+
     return Scaffold(
       backgroundColor: Get_White,
       body: Column(
@@ -59,10 +63,15 @@ class Intro_Screen_Three extends StatelessWidget {
               await prefs.setString(
                   'Attempt', json.encode({'Is_First': false}));
 
-              if (context.mounted) {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, Signup_Screen.routeName, (route) => false);
-              }
+              Set_Is_First_Time(false);
+              auth.Notify_Listener();
+
+
+              // TODO FIX THIS.
+
+              // if (context.mounted) {
+              //   Navigator.pushNamed(context, Signup_Screen.routeName);
+              // }
             },
           ),
         ),

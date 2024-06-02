@@ -10,7 +10,6 @@ import '../../../Authentication/Screens/Intro_Screen_Two.dart';
 import '../../../Authentication/Screens/Intro_Screen_Three.dart';
 import '../../../Authentication/Screens/Signup_Screen.dart';
 
-import '../../../Navigator_Screens/Chat_Screen.dart';
 import '../../../Navigator_Screens/Main_Screen.dart';
 import '../../../Navigator_Screens/Home_Screen.dart';
 
@@ -23,6 +22,8 @@ import '../../../Guideline/Screens/Products_Screen.dart';
 import '../../../Guideline/Screens/Guideline_Screen.dart';
 
 import '../../../Check_Time/Screens/Check_Time_Screen.dart';
+
+import '../../../Chat/Screens/Chat_Screen.dart';
 
 import '../../../Profile/Providers/Profile_Model.dart';
 import '../../../Profile/Screens/Profile_Screen.dart';

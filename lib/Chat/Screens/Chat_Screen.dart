@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../Global/Functions/Colors.dart';
-import '../../Global/Widgets/AppBar.dart';
+import '../../../../Global/Functions/Colors.dart';
+import '../../../Global/Widgets/AppBar.dart';
 
 class Chat_Screen extends StatefulWidget {
   const Chat_Screen({super.key});
@@ -17,6 +17,7 @@ class _Chat_ScreenState extends State<Chat_Screen> {
     return Scaffold(
       backgroundColor: Get_White,
       appBar: C_AppBar(
+        title: 'Admin',
         leading_widget: const SizedBox(),
       ),
     );

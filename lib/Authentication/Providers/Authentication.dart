@@ -11,6 +11,7 @@ const _server_url = 'localhost:8080';
 get Get_Server_Url => _server_url;
 
 var _is_first_time = true;
+void Set_Is_First_Time(value) => _is_first_time = value;
 get Get_Is_First_Time => _is_first_time;
 
 var is_try_auto_login = false;
@@ -69,6 +70,11 @@ get Get_Profile_Pic => _profile_pic;
 
 class Authentication extends ChangeNotifier {
   bool get Is_Auth => _token != null;
+
+
+  void Notify_Listener(){
+    notifyListeners();
+  }
 
   Future<void> Signup({
     required String first_name,

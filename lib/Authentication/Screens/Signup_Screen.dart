@@ -4,7 +4,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../Authentication/Providers/Authentication.dart';
 
-import '../../../Navigator_Screens/Main_Screen.dart';
+// import '../../../Navigator_Screens/Main_Screen.dart';
 
 import '../../../Global/Functions/Colors.dart';
 import '../../../Global/Functions/Errors.dart';
@@ -94,8 +94,10 @@ class _Signup_ScreenState extends State<Signup_Screen> {
         if (mounted) {
           // To Popup the Loading Screen.
           Navigator.pop(context);
+          Navigator.pop(context);
 
-          Navigator.pushNamed(context, Main_Screen.routeName);
+
+          // Navigator.pushNamed(context, Main_Screen.routeName);
         }
       } catch (error) {
         if (mounted) {
@@ -116,6 +118,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
         appBar: C_AppBar(
           title: 'Sign up',
           is_show_divider: true,
+          leading_widget: const SizedBox(),
         ),
         body: SingleChildScrollView(
           child: Padding(
