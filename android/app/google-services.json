@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "805232610007",
+    "project_id": "resort-98382",
+    "storage_bucket": "resort-98382.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805232610007:android:b699c5ef7a54dec7463e92",
+        "android_client_info": {
+          "package_name": "com.example.resort"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeN2cc1C6iglNMOPtMRLxoLnm0xPD-Ctg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:resort/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
+import 'package:resort/Notification_Center.dart';
 
 import '../../../Authentication/Screens/Login_Screen.dart';
 import '../../../Authentication/Providers/Authentication.dart';
@@ -36,13 +40,17 @@ import '../../../Profile/Screens/Change_Password_Screen.dart';
 
 final navigator_key = GlobalKey<NavigatorState>();
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   FlutterError.onError = (FlutterErrorDetails details) {
     return;
   };
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Get_Trans,
   ));
+  FirebaseApi().Init_Notification();
   runApp(const MyApp());
 }
 

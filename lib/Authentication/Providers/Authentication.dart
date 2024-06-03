@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:resort/Notification_Center.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Authentication/Providers/Signup.dart';
 
 import '../../../Global/Functions/Http_Exception.dart';
 
-const _server_url = 'localhost:8080';
+const _server_url = '192.168.1.6:8080';
 get Get_Server_Url => _server_url;
 
 var _is_first_time = true;
@@ -132,6 +133,8 @@ class Authentication extends ChangeNotifier {
   Future<void> Login({required Map<String, String> credentials}) async {
     final url = Get_REQUEST_URL(url: '/user/Login');
 
+    var fcm_token = await FirebaseApi().Get_FCM_Token();
+
     try {
       final response = await http.post(url,
           headers: <String, String>{
@@ -140,6 +143,7 @@ class Authentication extends ChangeNotifier {
           body: json.encode({
             'username': credentials['account'],
             'password': credentials['password'],
+            'fcmToken': fcm_token,
           }));
 
       final response_data = json.decode(response.body) as Map<String, dynamic>;

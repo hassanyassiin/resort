@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:resort/Notification_Center.dart';
 
 import '../../../Authentication/Providers/Authentication.dart';
 
@@ -18,6 +19,8 @@ Future<String> Cd_Signup({
 }) async {
   final url = Get_REQUEST_URL(url: '/user/Signup');
 
+  var fcm_token = await FirebaseApi().Get_FCM_Token();
+
   try {
     final response = await http.post(url,
         headers: <String, String>{
@@ -32,6 +35,7 @@ Future<String> Cd_Signup({
           'region': region,
           'username': username,
           'password': password,
+          'fcmToken': fcm_token,
           'phoneNumber': phone_number,
         }));
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resort/Notification_Center.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../Global/Functions/Colors.dart';
@@ -6,10 +7,21 @@ import '../../../Global/Widgets/Texts.dart';
 
 import '../../../Authentication/Screens/Intro_Screen_Two.dart';
 
-class Intro_Screen_One extends StatelessWidget {
+class Intro_Screen_One extends StatefulWidget {
   const Intro_Screen_One({super.key});
   static const routeName = 'Intro-Screen-One';
 
+  @override
+  State<Intro_Screen_One> createState() => _Intro_Screen_OneState();
+}
+
+class _Intro_Screen_OneState extends State<Intro_Screen_One> {
+
+  @override
+  void initState() {
+    FirebaseApi().Request_Permission();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
