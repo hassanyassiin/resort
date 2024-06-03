@@ -5,10 +5,9 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Authentication/Providers/Authentication.dart';
-import '../../../Authentication/Screens/Signup_Screen.dart';
+import '../../../Authentication/Screens/Intro_Screen_Two.dart';
 
 import '../../../Global/Functions/Colors.dart';
-
 import '../../../Global/Widgets/Texts.dart';
 import '../../../Global/Widgets/Buttons.dart';
 
@@ -66,12 +65,13 @@ class Intro_Screen_Three extends StatelessWidget {
               Set_Is_First_Time(false);
               auth.Notify_Listener();
 
-
-              // TODO FIX THIS.
-
-              // if (context.mounted) {
-              //   Navigator.pushNamed(context, Signup_Screen.routeName);
-              // }
+              if (context.mounted) {
+                Navigator.popUntil(
+                  context,
+                  ModalRoute.withName(Intro_Screen_Two.routeName),
+                );
+                Navigator.pop(context);
+              }
             },
           ),
         ),
