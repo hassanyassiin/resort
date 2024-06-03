@@ -4,8 +4,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../Authentication/Providers/Authentication.dart';
 
-import '../../../Navigator_Screens/Main_Screen.dart';
-
 import '../../Global/Functions/Errors.dart';
 import '../../../Global/Functions/Colors.dart';
 

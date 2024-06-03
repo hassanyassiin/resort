@@ -71,8 +71,7 @@ get Get_Profile_Pic => _profile_pic;
 class Authentication extends ChangeNotifier {
   bool get Is_Auth => _token != null;
 
-
-  void Notify_Listener(){
+  void Notify_Listener() {
     notifyListeners();
   }
 
