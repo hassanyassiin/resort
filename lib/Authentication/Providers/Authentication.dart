@@ -8,7 +8,7 @@ import '../../../Authentication/Providers/Signup.dart';
 
 import '../../../Global/Functions/Http_Exception.dart';
 
-const _server_url = '192.168.1.6:8080';
+const _server_url = 'localhost:8080';
 get Get_Server_Url => _server_url;
 
 var _is_first_time = true;
