@@ -8,7 +8,7 @@ import '../../../Authentication/Providers/Signup.dart';
 
 import '../../../Global/Functions/Http_Exception.dart';
 
-const _server_url = 'localhost:8080';
+const _server_url = '192.168.1.4:8080';
 get Get_Server_Url => _server_url;
 
 var _is_first_time = true;
@@ -126,6 +126,7 @@ class Authentication extends ChangeNotifier {
 
       notifyListeners();
     } catch (error) {
+      print(error);
       rethrow;
     }
   }
@@ -178,6 +179,7 @@ class Authentication extends ChangeNotifier {
 
       notifyListeners();
     } catch (error) {
+      print(error);
       rethrow;
     }
   }
